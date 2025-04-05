@@ -35,7 +35,7 @@ const Footer = () => {
             <h4 className="text-xl font-bold text-[#99489D] mb-4">Let's Connect</h4>
             <div className="flex justify-center md:justify-start gap-5 text-2xl">
               <a
-                href="https://linkedin.com/in/deborahrussell"
+                href="https:/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition"
@@ -49,7 +49,7 @@ const Footer = () => {
                 <i className="fas fa-envelope"></i>
               </a>
               <a
-                href="https://twitter.com/deborahwrites"
+                href="https://twitter.com/thedebbiedebs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition"

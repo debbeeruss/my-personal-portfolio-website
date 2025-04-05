@@ -23,11 +23,12 @@ const TimeConverter = () => {
   return (
     <div id="timezone" className="mt-16 bg-white p-12 text-center shadow-md rounded-lg">
       <h2 className="text-3xl font-bold text-black mb-6 flex items-center justify-center">
-        <i className="fas fa-clock text-[#99489D] mr-3"></i> Timezone Converter
+        <i className="fas fa-clock text-[#99489D] mr-1"></i> {/* Reduced margin-right */}
+        Timezone Converter
       </h2>
 
       <select
-        className="p-3 rounded border border-gray-300 text-black text-lg mb-6"
+        className="p-3 rounded border border-gray-300 text-black text-lg mb-8"
         value={timezone}
         onChange={(e) => setTimezone(e.target.value)}
       >
@@ -48,13 +49,13 @@ const TimeConverter = () => {
       </select>
 
       <div className="flex flex-col md:flex-row justify-between gap-8">
-        <div className="text-center w-full md:w-1/2">
+        <div className="text-center w-full md:w-1/2 mb-10 md:mb-0">
           <i className="fas fa-clock text-[#99489D] text-6xl"></i>
           <p className="mt-4 text-gray-800 text-2xl font-semibold">Current Time (UTC)</p>
           <p className="mt-2 text-gray-700 text-2xl">{currentTime}</p>
         </div>
 
-        <div className="text-center w-full md:w-1/2">
+        <div className="text-center w-full md:w-1/2 mb-10 md:mb-0">
           <i className="fas fa-clock text-[#99489D] text-6xl"></i>
           <p className="mt-4 text-gray-800 text-2xl font-semibold">Time in {timezone}</p>
           <p className="mt-2 text-gray-700 text-2xl">{selectedTime}</p>

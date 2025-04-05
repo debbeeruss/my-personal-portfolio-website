@@ -12,7 +12,7 @@ const AboutMe = () => {
           <div className="flex justify-center">
             <div className="relative">
               {/* Purple frame */}
-              <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-lg bg-[#99489D] z-0"></div>
+              <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-lg bg-[#99489D] z-0 md:translate-x-4 md:translate-y-4"></div>
 
               {/* Actual image */}
               <img

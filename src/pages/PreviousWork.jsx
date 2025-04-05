@@ -7,16 +7,16 @@ const articles = [
     link: "https://docs.google.com/document/d/1jX8-Th5S2iy9aGqKEUIOrLXNQkPg997VhFbfGCJ5NtI/edit?usp=sharing",
   },
   {
-    title: "Monetizing Music Streams in 2025",
-    description: "Explore modern tactics for independent musicians to make real income from Spotify and Apple Music.",
-    image: "/assets/idoma.jpg",
-    link: "https://yourwebsite.com/music-streams-monetization",
+    title: "Tiv Tribe In Benue State",
+    description: "The Tiv tribe is located between 6° 30′ and 8° 10′ north latitude and 8° and 10° east longitude, sharing boundaries with Chamba, Jukun, Igede, Iyala, Gakem, Obudu, Idoma, Mada, and Kolo in Taraba State, and Idoma, Mada, and Kolo in Nassarawa State...",
+    image: "/assets/tivv.jpg",
+    link: "https://docs.google.com/document/d/18KZ-Zi7xZPZvgZPyWVB17-UtGFZkNj_rqObn_lkuMwk/edit?usp=sharing",
   },
   {
-    title: "Mastering Digital Marketing for Creators",
-    description: "Learn how content creators and musicians can leverage online marketing to scale their brand.",
-    image: "/assets/idoma.jpg",
-    link: "https://yourwebsite.com/digital-marketing",
+    title: "Igala Tribe In Kogi State",
+    description: "Location of the Igala tribe The Igala tribe is a major ethnic group in Kogi State, Nigeria, located on the eastern side of the Niger and Benue confluence, covering an …",
+    image: "/assets/igala.jpg",
+    link: "https://docs.google.com/document/d/12DjmGiHwBc48B49LGB3dzpCJC5DnO-RoEYXkjGTR2nA/edit?usp=sharing",
   },
 ];
 
@@ -36,7 +36,7 @@ const PreviousWork = () => {
             >
               {/* Image with Gradient Overlay */}
               <div className="relative">
-                <img src={article.image} alt={article.title} className="w-full h-56 object-cover" />
+                <img src={article.image} alt={article.title} className="w-full h-50 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               </div>
 
