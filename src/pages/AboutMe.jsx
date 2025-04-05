@@ -8,17 +8,19 @@ const AboutMe = () => {
         <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">ABOUT ME</h2>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Image Section with Purple Background */}
-          <div className="relative flex justify-center">
-            <div
-              className="absolute top-6 left-6 w-[90%] h-[95%] rounded-lg -z-10"
-              style={{ backgroundColor: "#99489D" }} // Purple Background
-            ></div>
-            <img
-              src="src\assets\portfolio.png" 
-              alt="Deborah Russell"
-              className="relative rounded-lg shadow-lg w-full max-w-sm"
-            />
+          {/* Image Section with Purple Frame */}
+          <div className="flex justify-center">
+            <div className="relative">
+              {/* Purple frame */}
+              <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-lg bg-[#99489D] z-0"></div>
+
+              {/* Actual image */}
+              <img
+                src="/assets/debbie.jpg"
+                alt="Deborah Russell"
+                className="relative rounded-lg shadow-xl w-full max-w-sm z-10"
+              />
+            </div>
           </div>
 
           {/* Text Content */}
@@ -44,12 +46,11 @@ const AboutMe = () => {
             </p>
             <p className="text-gray-700 mb-8 text-lg">I can help you achieve this too!</p>
 
-            {/* Button with Updated Background Color */}
+            {/* CTA Button */}
             <div>
               <a
                 href="#"
-                className="text-white font-semibold py-3 px-6 rounded-lg shadow-md transition"
-                style={{ backgroundColor: "#99489D" }} // Button Background Updated
+                className="text-white font-semibold py-3 px-6 rounded-lg shadow-md transition bg-[#99489D] hover:bg-[#7A347D]"
               >
                 Learn More
               </a>
