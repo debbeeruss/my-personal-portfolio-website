@@ -18,29 +18,32 @@ const ContactMe = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setStatus("Submitting...");
 
-    // Use the FormSubmit.co service to handle the form submission
     const form = e.target;
-
     const data = new FormData(form);
-    fetch("https://formsubmit.co/e15e6d47a3e7e101253e39502ebb0f4f", {
-      method: "POST",
-      body: data,
-    })
-      .then(() => {
-        setStatus("Message sent successfully!");
-        setFormData({ name: "", email: "", message: "" });
-        setIsSubmitting(false);
-      })
-      .catch((error) => {
-        console.error("Failed to send message:", error);
-        setStatus("Error sending message, please try again.");
-        setIsSubmitting(false);
+
+    try {
+      const response = await fetch("https://formsubmit.co/e15e6d47a3e7e101253e39502ebb0f4f ", {
+        method: "POST",
+        body: data,
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      setStatus("Message sent successfully!");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Failed to send message:", error);
+      setStatus("Error sending message, please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -66,7 +69,7 @@ const ContactMe = () => {
           <form
             onSubmit={handleSubmit}
             method="POST"
-            action="https://formsubmit.co/e15e6d47a3e7e101253e39502ebb0f4f"
+            action="https://formsubmit.co/e15e6d47a3e7e101253e39502ebb0f4f "
             className="space-y-4"
           >
             {/* Full Name */}
