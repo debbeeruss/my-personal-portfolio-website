@@ -18,26 +18,46 @@ const ContactMe = () => {
     }));
   };
 
+  const validateForm = () => {
+    // Check if email is valid
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      return "Please enter a valid email address.";
+    }
+    // Check if message is not empty
+    if (formData.message.trim() === "") {
+      return "Message cannot be empty.";
+    }
+    return null; // No errors
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setStatus("Submitting...");
 
-    const form = e.target;
-    const data = new FormData(form);
+    // Validate form
+    const validationError = validateForm();
+    if (validationError) {
+      setIsSubmitting(false);
+      setStatus(validationError);
+      return; // Stop the submission if validation fails
+    }
 
     try {
-      const response = await fetch("https://formsubmit.co/e15e6d47a3e7e101253e39502ebb0f4f ", {
+      const form = e.target;
+      const data = new FormData(form);
+      const response = await fetch("https://formsubmit.co/e15e6d47a3e7e101253e39502ebb0f4f", {
         method: "POST",
         body: data,
       });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      if (response.ok) {
+        setStatus("Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus("Error sending message, please try again.");
       }
-
-      setStatus("Message sent successfully!");
-      setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       console.error("Failed to send message:", error);
       setStatus("Error sending message, please try again.");
@@ -69,7 +89,7 @@ const ContactMe = () => {
           <form
             onSubmit={handleSubmit}
             method="POST"
-            action="https://formsubmit.co/e15e6d47a3e7e101253e39502ebb0f4f "
+            action="https://formsubmit.co/e15e6d47a3e7e101253e39502ebb0f4f"
             className="space-y-4"
           >
             {/* Full Name */}
