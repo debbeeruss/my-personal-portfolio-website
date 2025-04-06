@@ -5,6 +5,7 @@ const LandingPage = () => {
   const [currentTime, setCurrentTime] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [animationCompleted, setAnimationCompleted] = useState(false);
 
   const fetchTime = () => {
     const utcDate = new Date();
@@ -20,6 +21,13 @@ const LandingPage = () => {
     const interval = setInterval(fetchTime, 60000);
     return () => clearInterval(interval);
   }, [timezone]);
+
+  useEffect(() => {
+    const typingTimeout = setTimeout(() => {
+      setAnimationCompleted(true);
+    }, 500); // Delay to trigger the slide-in effect after 0.5 seconds
+    return () => clearTimeout(typingTimeout);
+  }, []);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -78,7 +86,7 @@ const LandingPage = () => {
                 </li>
                 {/* Add some margin-top to space out the button */}
                 <li className="mt-4">
-                  <a href="#contact" onClick={toggleMenu} className="bg-[#99489D] text-white px-4 py-2 rounded-lg hover:bg-[#7A3A7D]">
+                  <a href="#contact" onClick={toggleMenu} className="bg-[#99489D] text-white px-4 py-2 rounded-lg hover:bg-[#7A347D]">
                     Contact Me
                   </a>
                 </li>
@@ -102,9 +110,13 @@ const LandingPage = () => {
           </div>
 
           {/* Text Content - Aligned to Image */}
-          <div className="w-full md:w-1/2 text-left flex flex-col justify-center pl-0 md:pl-16 pt-8 md:pt-0">
-            <h1 className="text-5xl font-bold">I'm Deborah Russell</h1>
-            <h2 className="text-2xl text-[#99489D] mt-4 font-bold">SEO Content Writer</h2>
+          <div className={`w-full md:w-1/2 text-left flex flex-col justify-center pl-0 md:pl-16 pt-8 md:pt-0 ${animationCompleted ? 'slide-in' : ''}`}>
+            <h1 className="text-5xl font-bold">
+              I'm Deborah Russell
+            </h1>
+            <h2 className="text-2xl text-[#99489D] mt-4 font-bold">
+              SEO Content Writer
+            </h2>
             <p className="mt-6 text-gray-300 text-lg">
               Tired of getting low website traffic? Failed to make your articles rank for selected keywords on Google’s first page?
             </p>
@@ -112,16 +124,36 @@ const LandingPage = () => {
               I have the solution you have been looking for. Based on experience and expertise, I can help your articles rank higher in at least positions 2 and 3.
             </p>
 
+            {/* Button with Slide-in Effect */}
             <div className="mt-8">
-            <a href="#contact" className="inline-block">
-    <button className="bg-[#99489D] px-8 py-3 rounded-lg text-white text-lg font-bold hover:bg-[#7A347D] transition">
-      Let’s Get Started →
-    </button>
-  </a>
+              <a href="#contact" className="inline-block">
+                <button className="bg-[#99489D] px-8 py-3 rounded-lg text-white text-lg font-bold hover:bg-[#7A347D] transition">
+                  Let’s Get Started →
+                </button>
+              </a>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Style for Slide-in Effects */}
+      <style>
+        {`
+          /* Slide-in Effect */
+          @keyframes slide-in {
+            0% {
+              transform: translateX(100%);
+            }
+            100% {
+              transform: translateX(0);
+            }
+          }
+
+          .slide-in {
+            animation: slide-in 1s ease-out forwards;
+          }
+        `}
+      </style>
     </div>
   );
 };
