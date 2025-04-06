@@ -27,7 +27,7 @@ const ContactMe = () => {
     const form = e.target;
 
     const data = new FormData(form);
-    fetch("https://formsubmit.co/russdeborah220@gmail.com", {
+    fetch("https://formsubmit.co/e15e6d47a3e7e101253e39502ebb0f4f", {
       method: "POST",
       body: data,
     })
@@ -66,7 +66,7 @@ const ContactMe = () => {
           <form
             onSubmit={handleSubmit}
             method="POST"
-            action="https://formsubmit.co/russdeborah220@gmail.com"
+            action="https://formsubmit.co/e15e6d47a3e7e101253e39502ebb0f4f"
             className="space-y-4"
           >
             {/* Full Name */}
