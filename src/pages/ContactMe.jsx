@@ -18,34 +18,49 @@ const ContactMe = () => {
     }));
   };
 
+  const validateForm = () => {
+    // Check if email is valid
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      return "Please enter a valid email address.";
+    }
+    // Check if message is not empty
+    if (formData.message.trim() === "") {
+      return "Message cannot be empty.";
+    }
+    return null; // No errors
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setStatus("Submitting...");
+
+    // Validate form
+    const validationError = validateForm();
+    if (validationError) {
+      setIsSubmitting(false);
+      setStatus(validationError);
+      return; // Stop the submission if validation fails
+    }
 
     try {
-      const response = await fetch(
-        "https://formsubmit.co/ajax/e15e6d47a3e7e101253e39502ebb0f4f",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const form = e.target;
+      const data = new FormData(form);
+      const response = await fetch("https://formsubmit.co/e15e6d47a3e7e101253e39502ebb0f4f", {
+        method: "POST",
+        body: data,
+      });
 
-      const result = await response.json();
-
-      if (result.success === "true") {
-        setStatus("Thanks for reaching out!");
+      if (response.ok) {
+        setStatus("Message sent successfully!");
         setFormData({ name: "", email: "", message: "" });
       } else {
-        setStatus("Something went wrong. Please try again.");
+        setStatus("Error sending message, please try again.");
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
-      setStatus("An error occurred. Please try again later.");
+      console.error("Failed to send message:", error);
+      setStatus("Error sending message, please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -54,7 +69,7 @@ const ContactMe = () => {
   return (
     <section
       id="contact"
-      className="bg-gray-100 min-h-screen px-6 md:px-16 flex items-center justify-center"
+      className="bg-gray-100 py-12 px-6 md:px-16 flex items-center justify-center"
     >
       <div className="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
         {/* Image Section */}
@@ -70,7 +85,7 @@ const ContactMe = () => {
           />
         </div>
 
-        {/* Contact Form Section */}
+        {/* Contact Form Section with Star Design */}
         <div className="bg-[#99489D] text-white p-8 rounded-xl shadow-lg">
           {/* Star Row */}
           <div className="flex justify-center mb-4 text-2xl">
@@ -87,7 +102,7 @@ const ContactMe = () => {
           >
             {/* Full Name */}
             <div>
-              <label className="block font-medium mb-1">Full Name</label>
+              <label className="block font-medium mb-2">Full Name</label>
               <input
                 type="text"
                 name="name"
@@ -99,9 +114,9 @@ const ContactMe = () => {
               />
             </div>
 
-            {/* Email */}
+            {/* Email Address */}
             <div>
-              <label className="block font-medium mb-1">Email Address</label>
+              <label className="block font-medium mb-2">Email Address</label>
               <input
                 type="email"
                 name="email"
@@ -115,10 +130,10 @@ const ContactMe = () => {
 
             {/* Message */}
             <div>
-              <label className="block font-medium mb-1">Message</label>
+              <label className="block font-medium mb-2">Message</label>
               <textarea
-                name="message"
                 rows="4"
+                name="message"
                 value={formData.message}
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-md text-black"
@@ -127,7 +142,7 @@ const ContactMe = () => {
               ></textarea>
             </div>
 
-            {/* Submit */}
+            {/* Submit Button */}
             <div className="text-center">
               <button
                 type="submit"
