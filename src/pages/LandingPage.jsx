@@ -25,7 +25,7 @@ const LandingPage = () => {
   useEffect(() => {
     const typingTimeout = setTimeout(() => {
       setAnimationCompleted(true);
-    }, 500); // Delay to trigger the slide-in effect after 0.5 seconds
+    }, 500);
     return () => clearTimeout(typingTimeout);
   }, []);
 
@@ -69,22 +69,9 @@ const LandingPage = () => {
                 </button>
               </div>
               <ul className="flex flex-col gap-6 px-6 py-8">
-                <li>
-                  <a href="#timezone" onClick={toggleMenu} className="text-black hover:text-[#99489D]">
-                    Timezone Converter
-                  </a>
-                </li>
-                <li>
-                  <a href="#about" onClick={toggleMenu} className="text-black hover:text-[#99489D]">
-                    About Me
-                  </a>
-                </li>
-                <li>
-                  <a href="#previouswork" onClick={toggleMenu} className="text-black hover:text-[#99489D]">
-                    Previous Work
-                  </a>
-                </li>
-                {/* Add some margin-top to space out the button */}
+                <li><a href="#timezone" onClick={toggleMenu} className="text-black hover:text-[#99489D]">Timezone Converter</a></li>
+                <li><a href="#about" onClick={toggleMenu} className="text-black hover:text-[#99489D]">About Me</a></li>
+                <li><a href="#previouswork" onClick={toggleMenu} className="text-black hover:text-[#99489D]">Previous Work</a></li>
                 <li className="mt-4">
                   <a href="#contact" onClick={toggleMenu} className="bg-[#99489D] text-white px-4 py-2 rounded-lg hover:bg-[#7A347D]">
                     Contact Me
@@ -99,24 +86,20 @@ const LandingPage = () => {
       {/* Hero Section */}
       <section id="hero" className="hero-section">
         <div className="relative bg-black text-white flex flex-col md:flex-row items-center justify-start px-6 md:px-12 h-screen pb-20 md:pb-0">
-          {/* Image Section - Left with Gradient */}
+          {/* Image Section */}
           <div className="w-full md:w-1/2 flex justify-start relative h-full">
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
             <img
               src="/assets/portfolio.png"
               alt="Deborah Russell"
-              className="absolute inset-0 w-full h-full object-contain opacity-75"
+              className="absolute inset-0 w-full h-full object-contain opacity-75 mt-12"
             />
           </div>
 
-          {/* Text Content - Aligned to Image */}
-          <div className={`w-full md:w-1/2 text-left flex flex-col justify-center pl-0 md:pl-16 pt-8 md:pt-0 ${animationCompleted ? 'slide-in' : ''}`}>
-            <h1 className="text-5xl font-bold">
-              I'm Deborah Russell
-            </h1>
-            <h2 className="text-2xl text-[#99489D] mt-4 font-bold">
-              SEO Content Writer
-            </h2>
+          {/* Text Content */}
+          <div className={`w-full md:w-1/2 text-left flex flex-col justify-center pl-0 md:pl-16 pt-8 md:pt-0 pb-12 ${animationCompleted ? 'slide-in' : ''}`}>
+            <h1 className="text-5xl font-bold">I'm Deborah Russell</h1>
+            <h2 className="text-2xl text-[#99489D] mt-4 font-bold">SEO Content Writer</h2>
             <p className="mt-6 text-gray-300 text-lg">
               Tired of getting low website traffic? Failed to make your articles rank for selected keywords on Google’s first page?
             </p>
@@ -124,7 +107,7 @@ const LandingPage = () => {
               I have the solution you have been looking for. Based on experience and expertise, I can help your articles rank higher in at least positions 2 and 3.
             </p>
 
-            {/* Button with Slide-in Effect */}
+            {/* CTA Button */}
             <div className="mt-8">
               <a href="#contact" className="inline-block">
                 <button className="bg-[#99489D] px-8 py-3 rounded-lg text-white text-lg font-bold hover:bg-[#7A347D] transition">
@@ -136,10 +119,9 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Style for Slide-in Effects */}
+      {/* Slide-in Animation Style */}
       <style>
         {`
-          /* Slide-in Effect */
           @keyframes slide-in {
             0% {
               transform: translateX(100%);
