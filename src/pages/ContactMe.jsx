@@ -18,18 +18,35 @@ const ContactMe = () => {
     }));
   };
 
+  const validateEmail = (email) => {
+    // Regular expression for validating a standard email format
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    // Validate email format
+    if (!validateEmail(formData.email)) {
+      setStatus("Please enter a valid email address.");
+      setIsSubmitting(false);
+      return; // Exit if email is invalid
+    }
+
     try {
-      const response = await fetch("https://formsubmit.co/ajax/e15e6d47a3e7e101253e39502ebb0f4f", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://formsubmit.co/ajax/e15e6d47a3e7e101253e39502ebb0f4f",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const result = await response.json();
 
@@ -48,8 +65,11 @@ const ContactMe = () => {
   };
 
   return (
-    <section id="contact" className="bg-gray-100 py-16 px-6 md:px-16">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <section
+      id="contact"
+      className="bg-gray-100 min-h-screen px-6 md:px-16 flex items-center justify-center"
+    >
+      <div className="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
         {/* Image Section */}
         <div className="relative flex justify-center">
           <div
