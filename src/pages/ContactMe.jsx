@@ -18,22 +18,9 @@ const ContactMe = () => {
     }));
   };
 
-  const validateEmail = (email) => {
-    // Regular expression for validating a standard email format
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailRegex.test(email);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Validate email format
-    if (!validateEmail(formData.email)) {
-      setStatus("Please enter a valid email address.");
-      setIsSubmitting(false);
-      return; // Exit if email is invalid
-    }
 
     try {
       const response = await fetch(
