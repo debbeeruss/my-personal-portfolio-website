@@ -70,6 +70,7 @@ const LandingPage = () => {
             <button onClick={toggleDark} className="text-2xl text-black dark:text-white hover:text-[#99489D] transition">
               {isDark ? "☀️" : "🌙"}
             </button>
+            {/* ✅ Small X stays – changes to ✖️ when menu is open */}
             <button onClick={toggleMenu} className="text-3xl text-black dark:text-white">
               {menuOpen ? "✖️" : "☰"}
             </button>
@@ -79,11 +80,9 @@ const LandingPage = () => {
             <>
               <div className="fixed inset-0 bg-black bg-opacity-40 z-40" onClick={toggleMenu} />
               <div className="fixed top-0 left-0 w-2/3 h-full bg-white dark:bg-gray-900 shadow-md transform transition-transform duration-300 ease-in-out z-50">
-                {/* ✅ Big X added back inside the menu */}
+                {/* ✅ Big X is COMPLETELY REMOVED from here – no close button inside */}
                 <div className="flex justify-end p-6">
-                  <button onClick={toggleMenu} className="text-black dark:text-white text-3xl hover:text-[#99489D] dark:hover:text-[#99489D] transition">
-                    &times;
-                  </button>
+                  {/* Intentionally empty – no Big X */}
                 </div>
                 <ul className="flex flex-col gap-6 px-6 py-8">
                   <li><a href="#timezone" onClick={toggleMenu} className="text-black dark:text-white hover:text-[#99489D] transition-colors">Timezone Converter</a></li>
