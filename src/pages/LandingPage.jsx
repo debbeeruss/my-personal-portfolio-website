@@ -43,10 +43,10 @@ const LandingPage = () => {
   const toggleDark = () => setIsDark(!isDark);
 
   return (
-    <div>
+    <div className="bg-white dark:bg-gray-900 transition-colors duration-300">
       {/* Header Section */}
       <section id="header" className="header-section">
-        <nav className="flex justify-between items-center px-6 md:px-12 py-5 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 relative">
+        <nav className="flex justify-between items-center px-6 md:px-12 py-5 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 relative transition-colors duration-300">
           <div className="ml-4 md:ml-16">
             <h1 className="text-2xl font-bold text-black dark:text-white">
               Deborah Russell-A
@@ -61,7 +61,7 @@ const LandingPage = () => {
             <li>
               <a
                 href="#timezone"
-                className="text-black dark:text-gray-200 hover:text-[#99489D] dark:hover:text-[#99489D]"
+                className="text-black dark:text-gray-200 hover:text-[#99489D] dark:hover:text-[#99489D] transition-colors"
               >
                 Timezone Converter
               </a>
@@ -69,7 +69,7 @@ const LandingPage = () => {
             <li>
               <a
                 href="#about"
-                className="text-black dark:text-gray-200 hover:text-[#99489D] dark:hover:text-[#99489D]"
+                className="text-black dark:text-gray-200 hover:text-[#99489D] dark:hover:text-[#99489D] transition-colors"
               >
                 About Me
               </a>
@@ -77,7 +77,7 @@ const LandingPage = () => {
             <li>
               <a
                 href="#previouswork"
-                className="text-black dark:text-gray-200 hover:text-[#99489D] dark:hover:text-[#99489D]"
+                className="text-black dark:text-gray-200 hover:text-[#99489D] dark:hover:text-[#99489D] transition-colors"
               >
                 Previous Work
               </a>
@@ -85,7 +85,7 @@ const LandingPage = () => {
             <li>
               <a
                 href="#contact"
-                className="bg-[#99489D] text-white px-4 py-2 rounded-lg hover:bg-[#7A3A7D]"
+                className="bg-[#99489D] text-white px-4 py-2 rounded-lg hover:bg-[#7A3A7D] transition-colors"
               >
                 Contact Me
               </a>
@@ -110,7 +110,7 @@ const LandingPage = () => {
               {isDark ? "☀️" : "🌙"}
             </button>
             <button onClick={toggleMenu} className="text-3xl text-black dark:text-white">
-              {menuOpen ? "✖️" : "☰"}
+              ☰
             </button>
           </div>
 
@@ -122,16 +122,15 @@ const LandingPage = () => {
                 onClick={toggleMenu}
               />
               <div className="fixed top-0 left-0 w-2/3 h-full bg-white dark:bg-gray-900 shadow-md transform transition-transform duration-300 ease-in-out z-50">
-                {/* BIG X REMOVED from here! */}
                 <div className="flex justify-end p-6">
-                  {/* Removed the &times; button */}
+                  {/* Big X removed */}
                 </div>
                 <ul className="flex flex-col gap-6 px-6 py-8">
                   <li>
                     <a
                       href="#timezone"
                       onClick={toggleMenu}
-                      className="text-black dark:text-white hover:text-[#99489D]"
+                      className="text-black dark:text-white hover:text-[#99489D] transition-colors"
                     >
                       Timezone Converter
                     </a>
@@ -140,7 +139,7 @@ const LandingPage = () => {
                     <a
                       href="#about"
                       onClick={toggleMenu}
-                      className="text-black dark:text-white hover:text-[#99489D]"
+                      className="text-black dark:text-white hover:text-[#99489D] transition-colors"
                     >
                       About Me
                     </a>
@@ -149,7 +148,7 @@ const LandingPage = () => {
                     <a
                       href="#previouswork"
                       onClick={toggleMenu}
-                      className="text-black dark:text-white hover:text-[#99489D]"
+                      className="text-black dark:text-white hover:text-[#99489D] transition-colors"
                     >
                       Previous Work
                     </a>
@@ -158,7 +157,7 @@ const LandingPage = () => {
                     <a
                       href="#contact"
                       onClick={toggleMenu}
-                      className="bg-[#99489D] text-white px-4 py-2 rounded-lg hover:bg-[#7A347D]"
+                      className="bg-[#99489D] text-white px-4 py-2 rounded-lg hover:bg-[#7A347D] transition-colors"
                     >
                       Contact Me
                     </a>
@@ -172,15 +171,15 @@ const LandingPage = () => {
 
       {/* Hero Section */}
       <section id="hero" className="hero-section">
-        <div className="relative bg-black text-white flex flex-col md:flex-row items-center justify-start px-6 md:px-12 min-h-[100svh] overflow-hidden">
-          {/* Image Section without Padding */}
+        <div className="relative bg-black dark:bg-gray-950 text-white flex flex-col md:flex-row items-center justify-start px-6 md:px-12 min-h-[100svh] overflow-hidden transition-colors duration-300">
+          {/* Image Section */}
           <div className="w-full md:w-1/2 relative flex items-center justify-center h-[300px] md:h-full overflow-hidden">
             <img
               src="/assets/portfolio.png"
               alt="Deborah Russell"
               className="w-full h-full object-cover opacity-75 object-top"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black dark:from-gray-950 via-transparent to-transparent z-10" />
           </div>
 
           {/* Text Content */}
@@ -189,15 +188,15 @@ const LandingPage = () => {
               animationCompleted ? "slide-in" : ""
             }`}
           >
-            <h1 className="text-5xl font-bold">I'm Deborah Russell</h1>
+            <h1 className="text-5xl font-bold text-white">I'm Deborah Russell</h1>
             <h2 className="text-2xl text-[#99489D] mt-4 font-bold">
               SEO Content Writer
             </h2>
-            <p className="mt-6 text-gray-300 text-lg">
+            <p className="mt-6 text-gray-300 dark:text-gray-400 text-lg">
               Tired of getting low website traffic? Failed to make your articles
               rank for selected keywords on Google's first page?
             </p>
-            <p className="mt-4 text-gray-300 text-lg">
+            <p className="mt-4 text-gray-300 dark:text-gray-400 text-lg">
               I have the solution you have been looking for. Based on experience
               and expertise, I can help your articles rank higher in at least
               positions 2 and 3.
@@ -205,7 +204,7 @@ const LandingPage = () => {
 
             <div className="mt-8 mb-7">
               <a href="#contact" className="inline-block">
-                <button className="bg-[#99489D] px-8 py-3 rounded-lg text-white text-lg font-bold hover:bg-[#7A347D] transition">
+                <button className="bg-[#99489D] px-8 py-3 rounded-lg text-white text-lg font-bold hover:bg-[#7A347D] transition-colors">
                   Let's Get Started →
                 </button>
               </a>
