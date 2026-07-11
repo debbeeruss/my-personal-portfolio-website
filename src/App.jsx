@@ -6,7 +6,7 @@ import AboutMe from "./pages/AboutMe";
 import PreviousWork from "./pages/PreviousWork";
 import ContactMe from "./pages/ContactMe";
 import Footer from "./pages/Footer";
-import Blog from "./pages/Blog";
+import Articles from "./pages/Articles";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
             </>
           }
         />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/articles" element={<Articles />} />
       </Routes>
     </Router>
   );
