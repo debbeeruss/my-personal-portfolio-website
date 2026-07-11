@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const articles = [
   {
@@ -25,60 +24,63 @@ const articles = [
   },
 ];
 
-const Blog = () => {
+const PreviousWork = () => {
   return (
-    <div className="bg-white dark:bg-gray-900 min-h-screen transition-colors duration-300">
-      {/* Header with Back Link */}
-      <div className="bg-[#99489D] py-6 px-6 md:px-12 flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-white">All Articles</h1>
-        <Link
-          to="/"
-          className="text-white hover:text-gray-200 bg-white/20 px-4 py-2 rounded-lg transition"
-        >
-          ← Back to Home
-        </Link>
-      </div>
-
-      {/* Articles Grid */}
-      <section className="py-14 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {articles.map((article, index) => (
-              <div
-                key={index}
-                className="relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:scale-[1.03] transition-transform duration-300"
-              >
-                <div className="relative">
-                  <img
-                    src={article.image}
-                    alt={article.title}
-                    className="w-full h-50 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
-                    {article.title}
-                  </h3>
-                  <p className="text-gray-700 dark:text-gray-300 mt-2">
-                    {article.description}
-                  </p>
-                  <a
-                    href={article.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block mt-4 px-5 py-2 bg-[#99489D] text-white font-medium rounded-full hover:bg-[#7A347D] transition"
-                  >
-                    Read More →
-                  </a>
-                </div>
+    <section
+      id="previouswork"
+      className="bg-gradient-to-b from-[#99489D] to-purple-700 py-14 px-6 scroll-mt-20"
+    >
+      <div className="max-w-7xl mx-auto text-center">
+        <h2 className="text-4xl font-bold text-white mb-10">Previous Work</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {articles.map((article, index) => (
+            <div
+              key={index}
+              className="relative bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl overflow-hidden shadow-lg hover:scale-[1.03] transition-transform duration-300"
+            >
+              {/* Image with Gradient Overlay */}
+              <div className="relative">
+                <img
+                  src={article.image}
+                  alt={article.title}
+                  className="w-full h-50 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               </div>
-            ))}
-          </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <h3 className="text-2xl font-semibold text-white">
+                  {article.title}
+                </h3>
+                <p className="text-gray-300 mt-2">{article.description}</p>
+                <a
+                  href={article.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-4 px-5 py-2 bg-white text-[#99489D] font-medium rounded-full hover:bg-gray-200 transition"
+                >
+                  Read More →
+                </a>
+
+                {/* 🔥 "View All Articles" button ONLY for the Igala Tribe card (index === 2) */}
+                {index === 2 && (
+                  <div className="mt-4">
+                    <a
+                      href="/articles"
+                      className="inline-block w-full px-5 py-2 bg-[#99489D] text-white font-medium rounded-full hover:bg-[#7A347D] transition border-2 border-white/30"
+                    >
+                      View All Articles →
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 
-export default Blog;
+export default PreviousWork;
