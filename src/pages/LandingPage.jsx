@@ -58,6 +58,7 @@ const LandingPage = () => {
             <li><a href="#timezone" className="text-black dark:text-gray-200 hover:text-[#99489D] dark:hover:text-[#99489D] transition-colors">Timezone Converter</a></li>
             <li><a href="#about" className="text-black dark:text-gray-200 hover:text-[#99489D] dark:hover:text-[#99489D] transition-colors">About Me</a></li>
             <li><a href="#previouswork" className="text-black dark:text-gray-200 hover:text-[#99489D] dark:hover:text-[#99489D] transition-colors">Previous Work</a></li>
+            <li><a href="/blog" className="text-black dark:text-gray-200 hover:text-[#99489D] dark:hover:text-[#99489D] transition-colors">Blog</a></li>
             <li><a href="#contact" className="bg-[#99489D] text-white px-4 py-2 rounded-lg hover:bg-[#7A3A7D] transition-colors">Contact Me</a></li>
             <li>
               <button onClick={toggleDark} className="text-2xl text-black dark:text-white hover:text-[#99489D] dark:hover:text-[#99489D] transition">
@@ -66,13 +67,10 @@ const LandingPage = () => {
             </li>
           </ul>
 
-          {/* Mobile: ONLY the small X (hamburger) before the dark mode icon */}
           <div className="flex items-center gap-4 md:hidden">
-            {/* Small X that stays (changes from ☰ to ✖️ when open) */}
             <button onClick={toggleMenu} className="text-3xl text-black dark:text-white">
               {menuOpen ? "✖️" : "☰"}
             </button>
-            {/* Dark mode icon */}
             <button onClick={toggleDark} className="text-2xl text-black dark:text-white hover:text-[#99489D] transition">
               {isDark ? "☀️" : "🌙"}
             </button>
@@ -82,11 +80,11 @@ const LandingPage = () => {
             <>
               <div className="fixed inset-0 bg-black bg-opacity-40 z-40" onClick={toggleMenu} />
               <div className="fixed top-0 left-0 w-2/3 h-full bg-white dark:bg-gray-900 shadow-md transform transition-transform duration-300 ease-in-out z-50">
-                {/* NO X inside the menu - only the hamburger X closes it */}
                 <ul className="flex flex-col gap-6 px-6 py-12 mt-4">
                   <li><a href="#timezone" onClick={toggleMenu} className="text-black dark:text-white hover:text-[#99489D] transition-colors text-lg">Timezone Converter</a></li>
                   <li><a href="#about" onClick={toggleMenu} className="text-black dark:text-white hover:text-[#99489D] transition-colors text-lg">About Me</a></li>
                   <li><a href="#previouswork" onClick={toggleMenu} className="text-black dark:text-white hover:text-[#99489D] transition-colors text-lg">Previous Work</a></li>
+                  <li><a href="/blog" onClick={toggleMenu} className="text-black dark:text-white hover:text-[#99489D] transition-colors text-lg">Blog</a></li>
                   <li className="mt-4">
                     <a href="#contact" onClick={toggleMenu} className="bg-[#99489D] text-white px-6 py-3 rounded-lg hover:bg-[#7A347D] transition-colors inline-block">
                       Contact Me
